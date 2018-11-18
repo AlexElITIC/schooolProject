@@ -1,0 +1,26 @@
+  <div id="izquierda">
+    <img src="assets/images/students.png" id="image">
+  </div>
+
+  <div id="derecha">
+    <div class="container">
+       <h1> English academy </h1>
+    <form {{action 'login' on="submit"}}>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          {{input id="email" type="email" value=username class="validate"}}
+        <label for="email" data-error="wrong" data-success="right">user</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">vpn_key</i>
+          {{input id="password" type="password" value=password}}
+          <label for="password">password</label>
+        </div>
+        <button  class="waves-effect waves-light btn #b388ff deep-purple accent-1"><i class="material-icons left">send</i>login</button>
+        <button class="waves-effect waves-light btn #b388ff deep-purple accent-1">registrarse</button>
+      </div>
+    </form>
+
+     </div>
+  </div>

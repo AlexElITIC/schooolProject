@@ -7,6 +7,21 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('login',{path:'/'});
+  this.route('auth', function() {
+    this.route('teacher', function() {
+      this.route('update-info',{path: '/:id'});
+      this.route('register');
+    });
+    this.route('student', function() {
+      this.route('update-info',{path: '/:id'});
+      this.route('register');
+    });
+    this.route('subscriber', function() {
+      this.route('update-info',{path: '/:id'});
+      this.route('register');
+    });
+  });
 });
 
 export default Router;

@@ -1,0 +1,21 @@
+#izquierda {
+float:left;
+width:800px;
+}
+
+#derecha {
+  padding-top: 150px;
+  padding-bottom: 150px;
+float:right;
+width:640px;
+text-align: center
+}
+#image{
+  width:100%;height:788px;
+}
+body{
+  color:#A06AF7;
+}
+h1,h2,h3,h4,h5{
+  color: #9e9e9e;
+}

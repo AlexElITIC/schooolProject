@@ -1,0 +1,24 @@
+{{#m-wrapper
+    query=".dropdown-trigger"
+    method="dropdown"
+}}
+<ul id="dropdown1" class="dropdown-content">
+  <li>{{link-to 'Registar suscriptor' 'auth.subscriber.register'}}</li>
+  <li>{{link-to 'Registar maestro' 'auth.teacher.register'}}</li>
+  <li>{{link-to 'Registar alumno' 'auth.student.register'}}</li>
+</ul>
+<nav>
+  <div class="nav-wrapper #b388ff deep-purple accent-1">
+    {{link-to 'English academy ' 'auth.index'}}
+    <ul class="right hide-on-med-and-down">
+      <li>{{link-to 'Agenda ' 'auth.index'}}</li>
+      <li>{{link-to 'Alumnos ' 'auth.student.index'}}</li>
+      <li>{{link-to 'Maestros ' 'auth.teacher.index'}}</li>
+      <li>{{link-to 'Suscriptor ' 'auth.subscriber.index'}}</li>
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Registrar<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><button class="waves-effect waves-light btn #e53935 red darken-1"{{action 'logOut'}}>logout</button></li>
+    </ul>
+  </div>
+</nav>
+{{/m-wrapper}}
+{{outlet}}

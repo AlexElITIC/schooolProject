@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Lista de maestros</h1>
+  <table class="highlight">
+          <thead>
+            <tr>
+                <th>Nombre completo</th>
+                <th>telefono</th>
+                <th>correo electronico</th>
+                <th></th>
+                <th></th>
+            </tr>
+          </thead>
+  {{#each model as |teacher|}}
+  {{#if teacher.id}}
+          <tbody>
+            <tr>
+              <td>{{teacher.name}} {{teacher.last_name}}</td>
+              <td>{{teacher.phone}}</td>
+              <td>{{teacher.mail}}</td>
+              <td><button class="waves-effect waves-light btn #b388ff deep-purple accent-1"{{action 'goToEdit' teacher.id}}>editar</button></td>
+              <td><button class="waves-effect waves-light btn #e53935 red darken-1"{{action 'deleteTeacher' teacher}}>borrar</button></td>
+            </tr>
+          </tbody>
+  {{/if}}
+  {{/each}}
+  </table>
+  </div>

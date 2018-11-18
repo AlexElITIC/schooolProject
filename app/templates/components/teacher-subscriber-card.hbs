@@ -1,0 +1,15 @@
+
+    <div class="card #b388ff deep-purple accent-1">
+      <div class="card-content white-text">
+        <span class="card-title">Nombre: {{title}}</span>
+        <p>apellido:{{last_name}}</p>
+        <p>telefono:{{phone}} </p>
+        <p>correo:{{mail}} </p>
+        <p>  {{moment-format contract 'DD/MM/YYYY'}}</p>
+        <p> {{moment-format end 'DD/MM/YYYY'}}</p>
+      </div>
+      <div class="card-action">
+        {{link-to "editar" 'auth.subscriber.update-info' subId}}
+        <button class="waves-effect waves-light btn #e53935 red darken-1"{{action 'delete'}}>borrar</button>
+      </div>
+    </div>

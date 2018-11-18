@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Lista de suscriptores</h1>
+  <div class="row">
+    {{#each model.subscriber as |subscriber|}}
+      {{#if subscriber.id}}
+          <div class="col s4">
+            {{teacher-subscriber-card title=subscriber.name last_name=subscriber.last_name
+            phone=subscriber.phone mail=subscriber.mail subId=subscriber.id
+            contract=subscriber.contract.contract_signature_date end=subscriber.contract.end_date
+          onDelete=(action 'deleteSubscriber' subscriber)}}
+          </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
