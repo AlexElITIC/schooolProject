@@ -8,6 +8,6 @@ export default Component.extend({
     let query = this.get('query');
     let method = this.get('method');
     let options = this.get('options');
-    return $(query)[method](options)
+    return $(query)[method](options);
   }
 });

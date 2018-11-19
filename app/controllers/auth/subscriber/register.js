@@ -11,7 +11,7 @@ export default Controller.extend({
           subscriber: suscriptor,
           contract_signature_date: new Date().toString()
         }).save().then(()=>{
-          alert('guardado!')
+          window.location.reload(true);
         })
       })
     }

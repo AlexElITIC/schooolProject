@@ -3,40 +3,54 @@
   <div class="row">
     <div class="col s6">
       <h4>buscar alumno</h4>
-      {{#power-select options=names onchange=(action "foo") as |name|}}
-  {{name}}
+      {{#power-select
+        options=model
+        searchField="student.name"
+        selected=selectedStudent
+        onchange=(action (mut selectedStudent))
+        placeholder="busca un alumno" as |contract|}}
+  {{contract.student.name}} {{contract.student.last_name}}
 {{/power-select}}
 
     </div>
+    {{#if selectedStudent}}
+    {{log selectedStudent}}
+<div class="col s12">
     <div class="col s12">
       <table class="bordered">
   <tbody>
     <tr>
-      <td> <b>Nombre</b> </td>
+      <td> <b>Nombre: {{selectedStudent.student.name}} {{selectedStudent.student.last_name}}</b> </td>
       <td></td>
-      <td> <b>telefono</b> </td>
+      <td> <b>telefono: {{selectedStudent.student.phone}}</b> </td>
       <td>  </td>
-      <td> <b>correo</b> </td>
+      <td> <b>correo: {{selectedStudent.student.email}}</b> </td>
       <td> </td>
-      <td> <b>inicio de contrato:</b> </td>
+      <td> <b>inicio de contrato: {{moment-format selectedStudent.contract.contract_signature_date 'DD/MM/YYYY'}}</b> </td>
       <td>  </td>
     </tr>
     <tr>
-      <td> <b>titular de contrato</b> </td>
+      <td> <b>titular de contrato: {{selectedStudent.contract.subscriber.name}} {{selectedStudent.contract.subscriber.last_name}}</b> </td>
       <td></td>
-      <td> <b>telefono</b> </td>
+      <td> <b>telefono: {{selectedStudent.contract.subscriber.phone}}</b> </td>
       <td> </td>
-      <td> <b>correo</b> </td>
+      <td> <b>correo: {{selectedStudent.contract.subscriber.mail}}</b> </td>
       <td>  </td>
-      <td> <b>inicio de contrato:</b> </td>
+      <td> <b>fin de contrato: {{moment-format selectedStudent.contract.end_date 'DD/MM/YYYY'}}</b> </td>
       <td>  </td>
     </tr>
   </tbody>
 </table>
 <br>
-<button class="waves-effect waves-light btn #b388ff deep-purple accent-1"{{action 'goToEdit'}}>editar</button>
-  <button class="waves-effect waves-light btn #e53935 red darken-1">borrar</button>
+{{#link-to 'auth.student.update-info' selectedStudent.student.id  class="waves-effect waves-light btn #b388ff deep-purple accent-1"}}
+          editar
+        {{/link-to}}
+  <button class="waves-effect waves-light btn #e53935 red darken-1" {{action 'deleteStudent' selectedStudent}}>borrar</button>
     </div>
+
+
+
+
 
     <div class="col s6">
       <br>
@@ -223,5 +237,7 @@
     </tbody>
   </table>
     </div>
+  </div>
+  {{/if}}
   </div>
 </div>

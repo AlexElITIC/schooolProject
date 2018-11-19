@@ -5,8 +5,8 @@
         <p>apellido:{{last_name}}</p>
         <p>telefono:{{phone}} </p>
         <p>correo:{{mail}} </p>
-        <p>  {{moment-format contract 'DD/MM/YYYY'}}</p>
-        <p> {{moment-format end 'DD/MM/YYYY'}}</p>
+        <p>Inicio de contrato: {{moment-format contract 'DD/MM/YYYY'}}</p>
+        <p>Fin de contrato: {{moment-format end 'DD/MM/YYYY'}}</p>
       </div>
       <div class="card-action">
         {{link-to "editar" 'auth.subscriber.update-info' subId}}

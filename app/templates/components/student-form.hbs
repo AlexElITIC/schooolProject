@@ -21,7 +21,9 @@
        <label for="email" data-error="wrong" data-success="right">mail</label>
        </div>
        <div class="input-field col s6">
+
          {{#power-select options=activity
+           disabled=(unless student.isNew true false)
            searchField="lesson.name"
            selected=student.current_activity
            onchange=(action (mut student.current_activity))
@@ -31,6 +33,7 @@
        </div>
        <div class="input-field col s6">
          {{#power-select options=contract
+           disabled=(unless student.isNew true false)
            searchField="subscriber.name"
            selected=selectedContract
            onchange=(action (mut selectedContract))

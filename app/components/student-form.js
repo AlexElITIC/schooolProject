@@ -11,7 +11,7 @@ export default Component.extend({
            alert('no dejes campos vacios');
          }
        }else{
-         this.onSave(model);
+         this.onSave(student);
        }
     }
   }
