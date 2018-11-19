@@ -3,6 +3,7 @@ import {computed} from '@ember/object';
 export default DS.Model.extend({
   contract_signature_date: DS.attr('string'),
   subscriber:DS.belongsTo('subscriber'),
+  student_contract:DS.hasMany('student-contract'),
   end_date: computed('contract_signature_date', function(){
     var d = new Date(this.get('contract_signature_date'));
     var year = d.getFullYear();

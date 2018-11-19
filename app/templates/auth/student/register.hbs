@@ -1,4 +1,7 @@
 <div class="container">
   <h1>Registro de alumno</h1>
-  {{student-form model=model }}
+  {{student-form student=model.student
+    selectedContract=selectedContract
+    contract=model.contract
+    activity=model.activity onSave=(action 'createNewStudent' model selectedContract)}}
 </div>

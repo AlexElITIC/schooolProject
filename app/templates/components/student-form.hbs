@@ -1,32 +1,42 @@
 <div class="row">
-   <form class="col s12" {{action 'save' model on="submit"}}>
+   <form class="col s12" {{action 'save' student on="submit"}}>
      <div class="row">
        <div class="input-field col s6">
          <i class="material-icons prefix">account_circle</i>
-         {{input id="name" type="text" class="validate" value=name}}
+         {{input id="name" type="text" class="validate" value=student.name}}
          <label for="name">Nombre</label>
        </div>
        <div class="input-field col s6">
-         {{input id="last_name" type="text" class="validate" value=last_name}}
+         {{input id="last_name" type="text" class="validate" value=student.last_name}}
          <label for="last_name">Apellidos</label>
        </div>
        <div class="input-field col s6">
          <i class="material-icons prefix">phone</i>
-         {{input id="icon_telephone" type="tel" class="validate" value=phone}}
+         {{input id="icon_telephone" type="tel" class="validate" value=student.phone}}
          <label for="icon_telephone">telefono/celular</label>
        </div>
        <div class="input-field col s6">
          <i class="material-icons prefix">mail</i>
-         {{input id="email" type="email" class="validate" value=mail}}
+         {{input id="email" type="email" class="validate" value=student.email}}
        <label for="email" data-error="wrong" data-success="right">mail</label>
        </div>
        <div class="input-field col s6">
-         {{input id="level" type="text" class="validate"}}
-         <label for="level">nivel</label>
+         {{#power-select options=activity
+           searchField="lesson.name"
+           selected=student.current_activity
+           onchange=(action (mut student.current_activity))
+            placeholder="Seleccionar actividad de inicio" as |activity|}}
+     {{activity.lesson.name }} {{activity.lesson.level.name}} {{activity.activity_type.name}}
+   {{/power-select}}
        </div>
        <div class="input-field col s6">
-         {{input id="subscriber" type="text" class="validate"}}
-         <label for="subscriber">A nombre de quien esta inscrito(suscriptor)</label>
+         {{#power-select options=contract
+           searchField="subscriber.name"
+           selected=selectedContract
+           onchange=(action (mut selectedContract))
+           placeholder="seleccionar titular de contrato" as |contract|}}
+     {{contract.subscriber.name}} {{contract.subscriber.last_name}}
+   {{/power-select}}
        </div>
      </div>
      <button  class="waves-effect waves-light btn #b388ff deep-purple accent-1"><i class="material-icons left">done</i>Guardar</button>
