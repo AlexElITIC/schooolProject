@@ -3,33 +3,24 @@
 
   <h1>Agenda</h1>
   <div class="row">
-    <div class="col s8">
-
-    </div>
-    <div class="#e8eaf6 indigo lighten-5 col s4">
+    <div class="#e8eaf6 indigo lighten-5 col s12" id="form">
       <h3>Registrar clase</h3>
-      <form class="col s12" {{action 'saveLecture' model.lecture selectedTeacher classroom on="submit"}}>
+      <form class="col s12" {{action 'saveLecture' model.lecture selectedTeacher on="submit"}}>
         <div class="row">
-          <div class="input-field col s1">
+          <div class="input-field col s6">
             <i class="material-icons prefix">date_range</i>
+            {{input id="start_date" type="text" class="validate" value=model.lecture.start_date}}
+            <label for="start_date">ejemplo: DD/MM/YYYY</label>
           </div>
-          <div class="input-field col s5">
-            {{date-select defaultDate=datenow lecture=model.lecture start_date=start_date}}
-          </div>
-          <div class="input-field col s1">
+
+          <div class="input-field col s6">
             <i class="material-icons prefix" >watch_later</i>
-          </div>
-          <div class="input-field col s5">
-
-            {{#m-wrapper query=".timepicker" method="timepicker" setHora=(action 'setHora' model.lecture start_hour)}}
-                {{input type="text" class="timepicker" value= start_hour}}
-                {{log start_hour}}
-            {{/m-wrapper}}
-
+            {{input id="start_hour" type="text" class="validate" value=model.lecture.start_hour}}
+            <label for="start_hour">ejemplo: 11:00PM</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">location_on</i>
-               {{input id="classRoom" type="text" class="validate" value=classroom}}
+               {{input id="classRoom" type="text" class="validate" value=model.lecture.classroom}}
                <label for="classRoom">Salón</label>
           </div>
 
@@ -46,5 +37,17 @@
         <button  class="waves-effect waves-light btn #b388ff deep-purple accent-1"><i class="material-icons left">done</i>Guardar</button>
       </form>
     </div>
+    <div class="col s12">
+          {{#each model.lectures as |lecture|}}
+          {{#if lecture.id}}
+          {{log lecture.teacher}}
+                <div class="col s4">
+                  {{lecture-card model=lecture onDelete=(action 'deleteLecture' lecture)}}
+                </div>
+                {{/if}}
+          {{/each}}
+
+    </div>
+
   </div>
 </div>

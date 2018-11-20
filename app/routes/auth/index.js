@@ -3,6 +3,7 @@ import RSVP from 'rsvp';
 export default Route.extend({
   model(){
     return RSVP.hash({
+      lectures: this.store.findAll('lecture'),
       teacher: this.store.findAll('teacher'),
       lecture: this.store.createRecord('lecture'),
     });

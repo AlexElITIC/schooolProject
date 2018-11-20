@@ -6,7 +6,8 @@ export default Controller.extend({
       this.transitionToRoute('auth.teacher.update-info', id)
     },
     deleteTeacher(teacher){
-      teacher.destroyRecord().then(()=>{alert('borrado')});
+      teacher.destroyRecord().then(()=>{window.location.reload(true);})
+      // teacher.destroyRecord().then(()=>{alert('borrado')});
     }
   }
 });

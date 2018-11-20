@@ -1,0 +1,12 @@
+
+    <div class="card #b388ff deep-purple accent-1">
+      <div class="card-content white-text">
+        <span class="card-title">Fecha: {{model.start_date}}</span>
+        <p>maestro:{{model.teacher.name}}</p>
+        <p>hora:{{model.start_hour}} </p>
+      </div>
+      <div class="card-action">
+        {{link-to "editar" 'auth.lecture.detail' model.id}}
+        <button class="waves-effect waves-light btn #e53935 red darken-1"{{action 'delete'}}>borrar</button>
+      </div>
+    </div>

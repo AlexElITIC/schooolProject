@@ -1,0 +1,66 @@
+<div class="container">
+  <form class="col s12" {{action 'saveReservation' model.reservation selectedActivity on="submit"}}>
+    <div class="row">
+      <div class="input-field col s6">
+        {{#power-select options=model.student
+          searchField="student.name"
+          selected= model.reservation.student
+          onchange=(action (mut model.reservation.student))
+          placeholder="estudiante" as |student|}}
+    {{student.name}} {{student.last_name}}
+  {{/power-select}}
+      </div>
+
+      <div class="input-field col s6">
+        {{#power-select options=model.activity
+          searchField="lesson.name"
+          selected= selectedActivity
+          onchange=(action (mut selectedActivity))
+           placeholder="Seleccionar actividad" as |activity|}}
+    {{activity.lesson.name }} {{activity.lesson.level.name}} {{activity.activity_type.name}}
+  {{/power-select}}
+      </div>
+    </div>
+    <button  class="waves-effect waves-light btn #b388ff deep-purple accent-1"><i class="material-icons left">done</i>Guardar</button>
+  </form>
+
+  <div class="col s12">
+
+        {{#each model.reservations as |res|}}
+        {{#if res.id}}
+        <div class="row">
+          <div class="col s3">
+            <p>{{res.student.name}} {{res.student.last_name}} presentará:</p>
+          </div>
+          <div class="col s3">
+            {{#power-select options=model.activity
+              searchField="lesson.name"
+              selected= res.activity
+              onchange=(action (mut res.activity))
+               placeholder="Seleccionar actividad" as |activity|}}
+        {{activity.lesson.name }} {{activity.lesson.level.name}} {{activity.activity_type.name}}
+      {{/power-select}}
+          </div>
+
+          <div class="col s2">
+            {{input id=grade type="number" value=res.grade}}
+            <label for="grade">calificación</label>
+
+          </div>
+
+
+
+          <div class="col s2">
+            <button  class="waves-effect waves-light btn #43a047 green darken-1" {{action 'updateReservation' res}}><i class="material-icons left">done</i>Guardar</button>
+
+          </div>
+          <div class="col s2">
+              <button class="waves-effect waves-light btn #e53935 red darken-1" {{action 'deleteReservation' res}}>borrar</button>
+          </div>
+        </div>
+
+              {{/if}}
+        {{/each}}
+
+  </div>
+</div>

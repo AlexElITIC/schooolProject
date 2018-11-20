@@ -21,6 +21,10 @@ Router.map(function() {
       this.route('update-info',{path: '/:id'});
       this.route('register');
     });
+
+    this.route('lecture', function() {
+      this.route('detail',{path: '/:id'});
+    });
   });
 });
 
