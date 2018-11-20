@@ -4,6 +4,7 @@
         <span class="card-title">Fecha: {{model.start_date}}</span>
         <p>maestro:{{model.teacher.name}}</p>
         <p>hora:{{model.start_hour}} </p>
+        <p>salón:{{model.classroom}} </p>
       </div>
       <div class="card-action">
         {{link-to "editar" 'auth.lecture.detail' model.id}}
