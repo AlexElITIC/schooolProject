@@ -1,4 +1,27 @@
 <div class="container">
   <h1>información de alumno</h1>
-  {{student-form student=model onSave=(action 'updateInfo')}}
+  {{student-form student=model.student onSave=(action 'updateInfo')}}
+  <div class="col s12">
+    <table class="striped">
+  <thead>
+    <tr>
+        <th>lección</th>
+        <th>calificación</th>
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each model.reservation as |reservation|}}
+    
+    <tr>
+      <td>{{reservation.activity.lesson.name }} {{reservation.activity.lesson.level.name}} {{reservation.activity.activity_type.name}}</td>
+      <td>{{reservation.grade}}</td>
+    </tr>
+
+    {{/each}}
+  </tbody>
+  </table>
+  </div>
 </div>
