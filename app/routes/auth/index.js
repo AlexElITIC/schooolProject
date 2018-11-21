@@ -5,6 +5,7 @@ export default Route.extend({
     return RSVP.hash({
       lectures: this.store.findAll('lecture'),
       teacher: this.store.findAll('teacher'),
+      lecture_rule: this.store.findAll('lecture_rule'),
       lecture: this.store.createRecord('lecture'),
     });
 }

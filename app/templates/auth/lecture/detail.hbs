@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>Añade Alumnos a esta clase</h1>
   <form class="col s12" {{action 'saveReservation' model.reservation selectedActivity on="submit"}}>
     <div class="row">
       <div class="input-field col s6">
@@ -19,6 +20,10 @@
            placeholder="Seleccionar actividad" as |activity|}}
     {{activity.lesson.name }} {{activity.lesson.level.name}} {{activity.activity_type.name}}
   {{/power-select}}
+      </div>
+
+      <div class="col s12">
+        Reglas de esta clase: {{model.lecture.lecture_rule.description}}
       </div>
     </div>
     <button  class="waves-effect waves-light btn #b388ff deep-purple accent-1"><i class="material-icons left">done</i>Guardar</button>

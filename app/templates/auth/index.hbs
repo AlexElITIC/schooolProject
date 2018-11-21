@@ -5,7 +5,7 @@
   <div class="row">
     <div class="#e8eaf6 indigo lighten-5 col s12" id="form">
       <h3>Registrar clase</h3>
-      <form class="col s12" {{action 'saveLecture' model.lecture selectedTeacher on="submit"}}>
+      <form class="col s12" {{action 'saveLecture' model.lecture selectedTeacher selectedRule on="submit"}}>
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">date_range</i>
@@ -31,6 +31,16 @@
               onchange=(action (mut selectedTeacher))
               placeholder="maestro" as |teacher|}}
         {{teacher.name}} {{teacher.last_name}}
+      {{/power-select}}
+          </div>
+
+          <div class="input-field col s6">
+            {{#power-select options=model.lecture_rule
+              searchField="lecture_rule.description"
+              selected= selectedRule
+              onchange=(action (mut selectedRule))
+              placeholder="seleccionar regla" as |rule|}}
+        {{rule.description}}
       {{/power-select}}
           </div>
         </div>
